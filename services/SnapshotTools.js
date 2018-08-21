@@ -51,7 +51,7 @@ exports.csvToJson = (csv) => {
     let finalResult = [];
     
 
-async(tupled) => {
+const test = async(tupled) => {
     for(i = 0; i < tupled.length; i++){
         const isVote = checkAccountVote(tupled[i].account);
         console.log("processing account", tupled[i].account, i, isVote);
@@ -59,9 +59,11 @@ async(tupled) => {
             finalResult.push({account : tupled[i].account, amount : tupled[i].amount});
     }
     //return tupled;
+    return finalResult;
 }
 
-return finalResult;
+test(tupled);
+
     
 
 
