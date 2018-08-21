@@ -52,7 +52,7 @@ exports.csvToJson = (csv) => {
     
 
 const test = async(tupled) => {
-    for(i = 0; i < tupled.length; i++){
+    for(let i = 0; i < tupled.length; i++){
         const isVote = checkAccountVote(tupled[i].account);
         console.log("processing account", tupled[i].account, i, isVote);
         if(isVote == true)
@@ -60,7 +60,7 @@ const test = async(tupled) => {
     }
     //return tupled;
     return finalResult;
-}
+};
 
 test(tupled);
 
