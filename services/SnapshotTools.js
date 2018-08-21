@@ -1,5 +1,5 @@
 const fs = require('fs');
-const EOSTools = require('./EOSTools');
+//const EOSTools = require('./EOSTools');
 
 /***
  * Pulls CSV from file system at a given path
