@@ -50,7 +50,7 @@ exports.csvToJson = (csv) => {
     //after formatting, filter account who vote producers
     let finalResult = [];
     
-
+/*
 const test = async(tupled) => {
     for(let i = 0; i < tupled.length; i++){
         const isVote = checkAccountVote(tupled[i].account);
@@ -63,7 +63,7 @@ const test = async(tupled) => {
 };
 
 test(tupled);
-
+*/
     
 
 
