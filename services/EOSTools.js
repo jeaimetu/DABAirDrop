@@ -4,6 +4,12 @@ const pMap = require('p-map');
 
 
 
+
+
+
+
+
+
 let httpEndpoint = null;
 let chainId = null;
 let logger = null;
@@ -14,7 +20,7 @@ exports.setDB = _db => db = _db;
 
 exports.setNetwork = async network => {
     if(!network || !network.length) network = 'https://nodes.get-scatter.com';
-    config.log("current network", network);
+    consol.log("current network", network);
 
     await Eos({httpEndpoint:network}).getInfo({}).catch(() => {
         logger.error(`Could not get_info from: ${network}`)
@@ -94,6 +100,7 @@ exports.estimateRAM = async (accountBalances, config) => {
 
 
 const getAccount = async (account) => {
+    const eos = await getEos();
     return await eos.getAccount(account).then(res => {
         return res;
     }).catch(err => {
