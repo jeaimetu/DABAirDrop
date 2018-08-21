@@ -1,8 +1,12 @@
+var express = require('express');
+
+
 const fs = require('fs');
 const winston = require('winston');
 const SnapshotTools = require('./services/SnapshotTools');
 const Prompter = require('./services/Prompter');
 const EOSTools = require('./services/EOSTools');
+const app = express();
 
 let config = {};
 let blacklist = {};
@@ -159,3 +163,9 @@ const run = async () => {
 setup();
 run();
 
+ var port = process.env.PORT || 5000;
+console.log("port", port);
+
+ app.listen(port, function() {
+   console.log("Listening on " + port);
+ });
