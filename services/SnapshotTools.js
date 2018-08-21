@@ -34,6 +34,7 @@ const checkAccountVote = async(account) => {
 };
 
 const test = async(tupled) => {
+        let finalResult = [];
     for(let i = 0; i < tupled.length; i++){
         const isVote = await checkAccountVote(tupled[i].account);
         console.log("processing account", tupled[i].account, i, isVote);
@@ -77,7 +78,7 @@ exports.csvToJson = (csv) => {
     }, []);    
     
     //after formatting, filter account who vote producers
-    let finalResult = [];
+
     
     test(tupled);
 
