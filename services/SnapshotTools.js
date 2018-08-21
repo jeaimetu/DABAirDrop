@@ -49,7 +49,8 @@ exports.csvToJson = (csv) => {
     
     //after formatting, filter account who vote producers
     let finalResult = [];
-    for(i = 0; i < tupled.length; i++){
+    //for(i = 0; i < tupled.length; i++){
+    for(i = 0; i < 10; i++){
         isVote = checkAccountVote(tupled[i].account);
         console.log("processing account", tupled[i].account, i, isVote);
         if(isVote == true)
