@@ -100,7 +100,7 @@ exports.estimateRAM = async (accountBalances, config) => {
 };
 
 
-const getAccount = async (account) => {
+export.getAccount = async (account) => {
     const eos = await getEos();
     return await eos.getAccount(account).then(res => {
         return res;
