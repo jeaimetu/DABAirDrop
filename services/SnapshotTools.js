@@ -1,6 +1,13 @@
 const fs = require('fs');
 const EOSTools = require('./EOSTools');
 
+
+var mongo = require('mongodb');
+var ObjectId = require('mongodb').ObjectId;
+var MongoClient = require('mongodb').MongoClient;
+var url = process.env.MONGODB_URI;
+
+
 /***
  * Pulls CSV from file system at a given path
  * @param pathToCSV
@@ -30,8 +37,16 @@ const test = async(tupled) => {
     for(let i = 0; i < tupled.length; i++){
         const isVote = await checkAccountVote(tupled[i].account);
         console.log("processing account", tupled[i].account, i, isVote);
-        if(isVote == true)
+        if(isVote == true){
             finalResult.push({account : tupled[i].account, amount : tupled[i].amount});
+            MongoClient.connect(url, (err, db) => {
+                const dbo = db.db("heroku_23gbks9t");
+                const myObj = {account : tupled[i].account, amount :  tupled[i].amount};
+                dbo.collection('snapshot').insertOne(myObj,(err, res) => {
+                    db.close();
+                });
+            });                
+        }
     }
     //return tupled;
     return finalResult;
@@ -59,14 +74,7 @@ exports.csvToJson = (csv) => {
     tupled = tupled.reduce((acc, e, i) => {
         if(i % 2 === 0) acc.push({account:e, amount:tupled[i+1]});
         return acc;
-    }, []);
-    
-    //test
-    checkAccountVote("gyydoojzgige").then(isVote => {
-        console.log("processing account", "gyydoojzgige", isVote);
-    });
-    return;    
-    //test
+    }, []);    
     
     //after formatting, filter account who vote producers
     let finalResult = [];
