@@ -6,7 +6,7 @@
   "symbol":"DAB",
   "ratio":1,
   "memo":"DAB testing",
-  "batchSize":50,
+  "batchSize":1,
   "limitCap":0,
   "decimals":4
 }
