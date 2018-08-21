@@ -14,6 +14,14 @@ exports.getCSV = (pathToCSV) => {
     })
 };
 
+
+const checkAccountVote = async(account) => {
+    const accountInfo = await eos.getAccount(account); // replace this to eostool?
+    if (accountInfo.voter_info.producers.length == 0 || accountInfo.voter_info.producers.length.proxy != null)
+        return false;
+    else
+        return true;
+};
 /***
  * Converts a .csv snapshot into an array of JSON objects in the format {account, amount}
  * @param csv
@@ -37,7 +45,16 @@ exports.csvToJson = (csv) => {
         if(i % 2 === 0) acc.push({account:e, amount:tupled[i+1]});
         return acc;
     }, []);
+    
+    //after formatting, filter account who vote producers
+    let finalResult = [];
+    for(i = 0; i < tupled.length; i++){
+        isVote = checkAccountVote(tupled[i].account);
+        if(isVote == true)
+            finalResult.push({account : tupled[i].account, amount : tupled[i].amount});
+    }
 
-    return tupled;
+    //return tupled;
+    return finalResult;
 };
 
