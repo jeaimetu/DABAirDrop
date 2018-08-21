@@ -126,7 +126,8 @@ const run = async () => {
     const snapshot = await SnapshotTools.getCSV('snapshot.csv');
     const initialAccountBalances = SnapshotTools.csvToJson(snapshot);
     const accountBalances = await filterLists(initialAccountBalances);
-    const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
+    //const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
+    const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:1024}))
                           .filter(tuple => tuple.amount > 0);
 
     const ram = await EOSTools.estimateRAM(accountBalances, config);
