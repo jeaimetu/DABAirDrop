@@ -59,7 +59,9 @@ async(tupled) => {
             finalResult.push({account : tupled[i].account, amount : tupled[i].amount});
     }
     //return tupled;
-    return finalResult;
 }
+
+return finalResult;
+    
 
 
