@@ -15,7 +15,7 @@ exports.getCSV = (pathToCSV) => {
     })
 };
 
-
+/*
 const checkAccountVote = async(account) => {
     const accountInfo = await EOSTools.getAccount(account); // replace this to eostool?
     if (accountInfo.voter_info.producers.length == 0 || accountInfo.voter_info.producers.length.proxy != null)
@@ -23,6 +23,7 @@ const checkAccountVote = async(account) => {
     else
         return true;
 };
+*/
 /***
  * Converts a .csv snapshot into an array of JSON objects in the format {account, amount}
  * @param csv
