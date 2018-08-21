@@ -60,8 +60,9 @@ exports.csvToJson = (csv) => {
     }, []);
     
     //test
-    const isVote = await checkAccountVote("gyydoojzgige");
+    checkAccountVote("gyydoojzgige").then(isVote => {
         console.log("processing account", "gyydoojzgige", isVote);
+    });
     return;    
     //test
     
