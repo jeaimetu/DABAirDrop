@@ -1,5 +1,5 @@
 const fs = require('fs');
-//const EOSTools = require('./EOSTools');
+const EOSTools = require('./EOSTools');
 
 /***
  * Pulls CSV from file system at a given path
@@ -15,7 +15,7 @@ exports.getCSV = (pathToCSV) => {
     })
 };
 
-/*
+
 const checkAccountVote = async(account) => {
     const accountInfo = await EOSTools.getAccount(account); // replace this to eostool?
     if (accountInfo.voter_info.producers.length == 0 || accountInfo.voter_info.producers.length.proxy != null)
@@ -23,7 +23,18 @@ const checkAccountVote = async(account) => {
     else
         return true;
 };
-*/
+
+const test = async(tupled) => {
+    for(let i = 0; i < tupled.length; i++){
+        const isVote = checkAccountVote(tupled[i].account);
+        console.log("processing account", tupled[i].account, i, isVote);
+        if(isVote == true)
+            finalResult.push({account : tupled[i].account, amount : tupled[i].amount});
+    }
+    //return tupled;
+    return finalResult;
+};
+
 /***
  * Converts a .csv snapshot into an array of JSON objects in the format {account, amount}
  * @param csv
@@ -51,17 +62,6 @@ exports.csvToJson = (csv) => {
     //after formatting, filter account who vote producers
     let finalResult = [];
     
-/*
-const test = async(tupled) => {
-    for(let i = 0; i < tupled.length; i++){
-        const isVote = checkAccountVote(tupled[i].account);
-        console.log("processing account", tupled[i].account, i, isVote);
-        if(isVote == true)
-            finalResult.push({account : tupled[i].account, amount : tupled[i].amount});
-    }
-    //return tupled;
-    return finalResult;
-};
-
 test(tupled);
-*/
+
+}
