@@ -51,7 +51,7 @@ exports.csvToJson = (csv) => {
     let finalResult = [];
     for(i = 0; i < tupled.length; i++){
         isVote = checkAccountVote(tupled[i].account);
-        console.log("processing account", tupled[i].account, i);
+        console.log("processing account", tupled[i].account, i, isVote);
         if(isVote == true)
             finalResult.push({account : tupled[i].account, amount : tupled[i].amount});
     }
