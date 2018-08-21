@@ -20,6 +20,7 @@ exports.setDB = _db => db = _db;
 
 exports.setNetwork = async network => {
     if(!network || !network.length) network = 'https://nodes.get-scatter.com';
+    console.log("using network", network);
     
 
     await Eos({httpEndpoint:network}).getInfo({}).catch(() => {
