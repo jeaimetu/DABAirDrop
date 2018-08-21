@@ -49,17 +49,19 @@ exports.csvToJson = (csv) => {
     
     //after formatting, filter account who vote producers
     let finalResult = [];
-    //for(i = 0; i < tupled.length; i++){
-    for(i = 0; i < 1000; i++){
-        const idx = i;
-        checkAccountVote(tupled[idx].account).then(isVote=> {
-        console.log("processing account", tupled[idx].account, idx, isVote);
-        if(isVote == true)
-            finalResult.push({account : tupled[idx].account, amount : tupled[idx].amount});
-        });
-    }
+    
 
+async(tupled) => {
+    for(i = 0; i < tupled.length; i++){
+        const isVote = checkAccountVote(tupled[i].account);
+        console.log("processing account", tupled[i].account, i, isVote);
+        if(isVote == true)
+            finalResult.push({account : tupled[i].account, amount : tupled[i].amount});
+        });
+
+    }
     //return tupled;
     return finalResult;
-};
+}
+
 
