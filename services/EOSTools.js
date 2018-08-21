@@ -92,6 +92,14 @@ exports.estimateRAM = async (accountBalances, config) => {
 };
 
 
+const getAccount = async (account) => {
+    return await eos.getAccount(account).then(res => {
+        return res;
+    }).catch(err => {
+        return null;
+    });
+}
+
 /***
  * Gets an account's SYMBOL token balance
  * @param eos
