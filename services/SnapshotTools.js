@@ -18,7 +18,9 @@ exports.getCSV = (pathToCSV) => {
 
 const checkAccountVote = async(account) => {
     const accountInfo = await EOSTools.getAccount(account); // replace this to eostool?
-    if (accountInfo.voter_info.producers.length == 0 || accountInfo.voter_info.producers.length.proxy != null)
+    console.log("checkAccountVote", accountInfo, accountInfo.voter_info.producers.length, 
+                accountInfo.voter_info.producers.length.proxy);
+    if (accountInfo.voter_info.producers.length == 0 || accountInfo.voter_info.producers.length.proxy == null)
         return false;
     else
         return true;
