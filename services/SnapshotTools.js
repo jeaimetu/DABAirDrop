@@ -51,10 +51,11 @@ exports.csvToJson = (csv) => {
     let finalResult = [];
     //for(i = 0; i < tupled.length; i++){
     for(i = 0; i < 10; i++){
-        checkAccountVote(tupled[i].account).then(isVote=> {
-        console.log("processing account", tupled[i].account, i, isVote);
+        const idx = i;
+        checkAccountVote(tupled[idx].account).then(isVote=> {
+        console.log("processing account", tupled[idx].account, idx, isVote);
         if(isVote == true)
-            finalResult.push({account : tupled[i].account, amount : tupled[i].amount});
+            finalResult.push({account : tupled[idx].account, amount : tupled[idx].amount});
         });
     }
 
