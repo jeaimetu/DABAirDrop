@@ -1,4 +1,5 @@
 const fs = require('fs');
+const EOSTools = require('./services/EOSTools');
 
 /***
  * Pulls CSV from file system at a given path
@@ -49,7 +50,7 @@ exports.csvToJson = (csv) => {
     //after formatting, filter account who vote producers
     let finalResult = [];
     for(i = 0; i < tupled.length; i++){
-        isVote = checkAccountVote(tupled[i].account);
+        isVote = EOSTools.checkAccountVote(tupled[i].account);
         if(isVote == true)
             finalResult.push({account : tupled[i].account, amount : tupled[i].amount});
     }
