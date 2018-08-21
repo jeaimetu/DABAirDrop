@@ -59,6 +59,12 @@ exports.csvToJson = (csv) => {
         return acc;
     }, []);
     
+    //test
+    const isVote = await checkAccountVote("gyydoojzgige");
+        console.log("processing account", "gyydoojzgige", isVote);
+    return;    
+    //test
+    
     //after formatting, filter account who vote producers
     let finalResult = [];
     
