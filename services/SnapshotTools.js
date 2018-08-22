@@ -42,7 +42,7 @@ const test = async(tupled) => {
             finalResult.push({account : tupled[i].account, amount : tupled[i].amount});
             MongoClient.connect(url, (err, db) => {
                 const dbo = db.db("heroku_23gbks9t");
-                const myObj = {account : tupled[i].account, amount :  tupled[i].amount};
+                const myObj = {account : tupled[i].account, amount :  tupled[i].amount, idx : i};
                 dbo.collection('snapshot').insertOne(myObj,(err, res) => {
                     db.close();
                 });
