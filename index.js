@@ -50,7 +50,9 @@ const airdrop = async() => {
 						console.log("airdrop completed for", res.account);
 						db.close();
 					});
-					
+				});					
+			}else{
+				console.log("nothing remaining airdrop");
 			}
 		});
 	});
