@@ -44,7 +44,7 @@ const airdrop = async() => {
 		const findQuery = { drop : "false" };
 		dbo.collection('snapshot0824').findOne(findQuery, function(err, res){
 			if(res.length != 0){
-				transfer2("eoscafekorea", res.account, "1000.0000", msg).then((output)=>{
+				ret = await transfer2("eoscafekorea", res.account, "1000.0000", msg).then((output)=>{
 					//update db to true
 					const findQuery = {_id : ObjectId(res._id)};
 					const myObj = {$set : {drop : true}};
@@ -60,14 +60,7 @@ const airdrop = async() => {
 		});
 	});
 }
-eos.transaction(tr => {
-	  tr.buyrambytes({
-    payer: 'eoscafekorea',
-    receiver: 'eoscafekorea',
-    bytes: 20000*1024
-  })
-});
-	
+
 //airdrop();
 setTimeout(airdrop, 30);						       
 //initAirDrop();
