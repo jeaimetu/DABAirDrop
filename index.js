@@ -4,6 +4,8 @@ var ObjectId = require('mongodb').ObjectId;
 var MongoClient = require('mongodb').MongoClient;
 var url = process.env.MONGODB_URI;
 
+const app = express();
+
 
 function initAirDrop(){
 	MongoClient.connect(url, (err, db) => {
