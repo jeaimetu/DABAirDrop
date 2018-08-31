@@ -42,7 +42,7 @@ const airdrop = async() => {
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
 		const findQuery = { drop : "false" };
-		dbo.collection('snapshot0824').findOne(findQuery, function(err, res){
+		async dbo.collection('snapshot0824').findOne(findQuery, function(err, res){
 			if(res.length != 0){
 				ret = await transfer2("eoscafekorea", res.account, "1000.0000", msg).then((output)=>{
 					//update db to true
