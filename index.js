@@ -50,12 +50,16 @@ const airdrop = async() => {
 					const myObj = {$set : {drop : true}};
 					dbo.collection('snapshot0824').updateOne(findQuery, myObj, function(err, resUpdate){
 						console.log("airdrop completed for", res.account);
-						setTimeout(airdrop, 100);
+						setTimeout(airdrop, 200);
 						db.close();
 					});
-				});					
+				}).catch((err) =>{
+					console.log("trasnfer error", res.account);
+					db.close();
+				});
 			}else{
 				console.log("nothing remaining airdrop");
+				db.close();
 			}
 		});
 	});
