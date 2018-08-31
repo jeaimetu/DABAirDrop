@@ -10,7 +10,7 @@ const app = express();
 function initAirDrop(){
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
-		dbo.collection('snapshot0824').updateMany({},{$set : {drop : "false"}}, function(err, db){
+		dbo.collection('snapshot0824').updateMany({},{$set : {drop : "false"}}, function(err, res){
 			if(err) throw err;
 			console.log("initial complete");
 			db.close();
