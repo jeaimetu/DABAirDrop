@@ -55,6 +55,7 @@ const airdrop = async() => {
 					});
 				}).catch((err) =>{
 					console.log("trasnfer error", res.account);
+					setTimeout(airdrop, 200);
 					db.close();
 				});
 			}else{
