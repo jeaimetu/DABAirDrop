@@ -4,6 +4,8 @@ var ObjectId = require('mongodb').ObjectId;
 var MongoClient = require('mongodb').MongoClient;
 var url = process.env.MONGODB_URI;
 
+const Eos = require('eosjs');
+
 const app = express();
 
 config = {
