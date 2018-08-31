@@ -50,6 +50,7 @@ const airdrop = async() => {
 					const myObj = {$set : {drop : true}};
 					dbo.collection('snapshot0824').updateOne(findQuery, myObj, function(err, resUpdate){
 						console.log("airdrop completed for", res.account);
+						setTimeout(airdrop, 30);
 						db.close();
 					});
 				});					
@@ -68,7 +69,7 @@ eos.transaction(tr => {
 });
 	
 //airdrop();
-setInterval(airdrop, 30);						       
+setTimeout(airdrop, 30);						       
 //initAirDrop();
 	
 
