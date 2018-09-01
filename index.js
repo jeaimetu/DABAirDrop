@@ -9,9 +9,9 @@ const Eos = require('eosjs');
 const app = express();
 
 config = {
-  chainId: "038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca", // 32 byte (64 char) hex string
+  chainId: "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906", // 32 byte (64 char) hex string
   keyProvider: process.env.key, // WIF string or array of keys..
-  httpEndpoint: 'http://193.93.219.219:8888',
+  httpEndpoint: 'https://mainnet.eoscalgary.io',
   expireInSeconds: 60,
   broadcast: true,
   verbose: false, // API activity
@@ -38,7 +38,7 @@ function initAirDrop(){
 
 const airdrop = async() => {
 	console.log("do airdrop");
-	const msg = "Dabble(https://dabble.cafe) is a social Dapp which rewards users for writings. You can trade DAB token at ********** ********** *****. This airdrop is supported by ********** ********** *******."
+	const msg = "Dabble(https://dabble.cafe) is a social Dapp which rewards users for writings. You can trade DAB token at DEXEOS(https://dexeos.io). This airdrop is supported by EOSeoul(https://eoseoul.io)."
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
 		const findQuery = { drop : "false" };
@@ -67,8 +67,8 @@ const airdrop = async() => {
 }
 
 //airdrop();
-//setTimeout(airdrop, 30);						       
-initAirDrop();
+setTimeout(airdrop, 30);						       
+//initAirDrop();
 	
 
 
