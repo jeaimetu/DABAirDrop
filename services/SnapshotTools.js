@@ -49,6 +49,8 @@ const checkAccountVote2 = async(account) => {
         console.log("in test async");
         const client = await MongoClient.connect(url);
 
+        const db = client.db('heroku_23gbks9t');
+        
         for(let i = 0; i < tupled.length; i++){
             const isVote = await checkAccountVote(tupled[i].account);
             console.log("processing account", tupled[i].account, i, isVote);
@@ -60,22 +62,23 @@ const checkAccountVote2 = async(account) => {
         
 
             //finalResult.push({account : tupled[i].account, amount : amount});
-            const db = client.db('heroku_23gbks9t');
+
              
             const myObj = {account : tupled[i].account, amount :  amount, idx : i};
             const res = await db.collection('snapshot0907').insertOne(myObj);
             console.log(`res => ${JSON.stringify(res)}`);
-            client.close();   
+ 
         }
+        client.close();  
     };  
 
 exports.test = async(tupled) => {
-    //let finalResult = [];
+    let finalResult = [];
     console.log("in test");
-    dbsync(tupled);
+    finalResult = await dbsync(tupled);
        
     //return tupled;
-    //return finalResult;
+    return finalResult;
 };
 
 /***
