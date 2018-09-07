@@ -91,7 +91,7 @@ exports.csvToJson = (csv) => {
     
     //after formatting, filter account who vote producers
     console.log(tupled);
-    
+    return tupled;
     //test(tupled);
 
 }
