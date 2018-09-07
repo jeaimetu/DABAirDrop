@@ -79,7 +79,7 @@ exports.csvToJson = (csv) => {
 
     // Removing Ethereum and EOS keys
     arr.map(e => {
-        if(e.indexOf('0x') !== 0 && e.indexOf('EOS') !== 0) tupled.push(e);
+        if(e.indexOf('0x') !== 0 && e.indexOf('EOS') !== 0 && e.indexOf('2018-') !== 0) tupled.push(e);
     });
 
     // Formatting to {account, amount}
