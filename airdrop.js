@@ -65,10 +65,11 @@ const filterLists = async (snapshot) => {
                 return false;
             }
         }) : snapshot;
-
+/*
     if(filteredSnapshot.length != snapshot.length && await Prompter.prompt(
         `\r\nPress enter if you agree with above blacklist and want to continue (these accounts will be removed from the airdrop)`
     ) !== '') process.exit();
+    */
 
     // apply limit cap ignoring the white listed addresses
     if(config.limitCap && config.limitCap > 0) {
