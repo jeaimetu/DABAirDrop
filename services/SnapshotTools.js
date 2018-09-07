@@ -46,30 +46,27 @@ const checkAccountVote2 = async(account) => {
 
 exports.test = async(tupled) => {
     (async () => {
-        MongoClient.connect(url, (err, db) => {
+        const client = await MongoClient.connect(url,
+              {useNewUrlParser: true });
         let finalResult = [];
-    for(let i = 0; i < tupled.length; i++){
-        const isVote = await checkAccountVote(tupled[i].account);
-        console.log("processing account", tupled[i].account, i, isVote);
-        var amount = 0;
-        if(isVote == true)
-            amount = (2 * tupled[i].amount).toFixed(4);
-        else
-            amount = (1 * tupled[i].amount).toFixed(4);
+        for(let i = 0; i < tupled.length; i++){
+            const isVote = await checkAccountVote(tupled[i].account);
+            console.log("processing account", tupled[i].account, i, isVote);
+            var amount = 0;
+            if(isVote == true)
+                amount = (2 * tupled[i].amount).toFixed(4);
+            else
+                amount = (1 * tupled[i].amount).toFixed(4);
         
 
-         finalResult.push({account : tupled[i].account, amount : amount});
-         
-             const dbo = db.db("heroku_23gbks9t");
-             const myObj = {account : tupled[i].account, amount :  amount, idx : i};
-             dbo.collection('snapshot0907').insertOne(myObj,(err, res) => {
-                 db.close();
-             });
-   
-    }
-    });
-    });
-                   
+            finalResult.push({account : tupled[i].account, amount : amount});
+            const db = client.db('heroku_23gbks9t');
+             
+            const myObj = {account : tupled[i].account, amount :  amount, idx : i};
+            const res = await db.collection('snapshot0907').insertOne(myObj);
+            client.close();   
+        }
+    });         
     //return tupled;
     return finalResult;
 };
