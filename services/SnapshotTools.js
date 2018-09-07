@@ -59,7 +59,7 @@ const checkAccountVote2 = async(account) => {
                 amount = (1 * tupled[i].amount).toFixed(4);
         
 
-            finalResult.push({account : tupled[i].account, amount : amount});
+            //finalResult.push({account : tupled[i].account, amount : amount});
             const db = client.db('heroku_23gbks9t');
              
             const myObj = {account : tupled[i].account, amount :  amount, idx : i};
