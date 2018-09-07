@@ -129,14 +129,14 @@ const run = async () => {
         process.exit();
     }
 
-    const snapshot = await SnapshotTools.getCSV('snapshot2.csv');
+    const snapshot = await SnapshotTools.getCSV('20180906_account_snapshot.csv');
     const initialAccountBalances = SnapshotTools.csvToJson(snapshot);
     const accountBalances = await filterLists(initialAccountBalances);
     //const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
     const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
                           .filter(tuple => tuple.amount >= 1);
     
-    console.log("ratioBalances", ratioBalances);
+    //console.log("ratioBalances", ratioBalances);
 
     //check voting info and set amount in accordance with that
     //calling test(ratioBalances)
