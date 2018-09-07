@@ -53,7 +53,7 @@ const checkAccountVote2 = async(account) => {
         
         for(let i = 0; i < tupled.length; i++){
             const isVote = await checkAccountVote(tupled[i].account);
-            console.log("processing account", tupled[i].account, i, isVote);
+            //console.log("processing account", tupled[i].account, i, isVote);
             var amount = 0;
             if(isVote == true)
                 amount = (2 * tupled[i].amount).toFixed(4);
@@ -66,7 +66,7 @@ const checkAccountVote2 = async(account) => {
              
             const myObj = {account : tupled[i].account, amount :  amount, idx : i};
             const res = await db.collection('snapshot0907').insertOne(myObj);
-            console.log(`res => ${JSON.stringify(res)}`);
+            //console.log(`res => ${JSON.stringify(res)}`);
  
         }
         client.close();  
@@ -102,12 +102,12 @@ exports.csvToJson = (csv) => {
     // Formatting to {account, amount}
     tupled = tupled.reduce((acc, e, i) => {
         if(i % 3 === 0 && tupled[i] != "") acc.push({account:tupled[i+1], amount:tupled[i+2]});
-        console.log("reduce : ", i, tupled[i]);
+        //console.log("reduce : ", i, tupled[i]);
         return acc;
     }, []);    
     
     //after formatting, filter account who vote producers
-    console.log(tupled);
+    //console.log(tupled);
     return tupled;
     //test(tupled);
 
