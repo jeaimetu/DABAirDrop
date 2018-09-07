@@ -45,10 +45,11 @@ const checkAccountVote2 = async(account) => {
 
 
 exports.test = async(tupled) => {
+    let finalResult = [];
     (async () => {
         const client = await MongoClient.connect(url,
               {useNewUrlParser: true });
-        let finalResult = [];
+
         for(let i = 0; i < tupled.length; i++){
             const isVote = await checkAccountVote(tupled[i].account);
             console.log("processing account", tupled[i].account, i, isVote);
