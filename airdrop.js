@@ -128,7 +128,7 @@ const run = async () => {
         process.exit();
     }
 
-    const snapshot = await SnapshotTools.getCSV('snapshot.csv');
+    const snapshot = await SnapshotTools.getCSV('snapshot2.csv');
     const initialAccountBalances = SnapshotTools.csvToJson(snapshot);
     const accountBalances = await filterLists(initialAccountBalances);
     //const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
