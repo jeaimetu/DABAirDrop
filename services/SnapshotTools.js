@@ -49,16 +49,21 @@ const test = async(tupled) => {
     for(let i = 0; i < tupled.length; i++){
         const isVote = await checkAccountVote(tupled[i].account);
         console.log("processing account", tupled[i].account, i, isVote);
-        if(isVote == true){
-            finalResult.push({account : tupled[i].account, amount : tupled[i].amount});
-            MongoClient.connect(url, (err, db) => {
-                const dbo = db.db("heroku_23gbks9t");
-                const myObj = {account : tupled[i].account, amount :  tupled[i].amount, idx : i};
-                dbo.collection('snapshot0907').insertOne(myObj,(err, res) => {
-                    db.close();
-                });
-            });                
-        }
+        var amount = 0;
+        if(isVote == true)
+            amount = (2 * tupled[i].amount).toFixed(4);
+        else
+            amount = (1 * tupled[i].amount).toFixed(4);
+        
+
+         finalResult.push({account : tupled[i].account, amount : amount});
+         MongoClient.connect(url, (err, db) => {
+             const dbo = db.db("heroku_23gbks9t");
+             const myObj = {account : tupled[i].account, amount :  amount, idx : i};
+             dbo.collection('snapshot0907').insertOne(myObj,(err, res) => {
+                 db.close();
+             });
+         });     
     }
     //return tupled;
     return finalResult;
