@@ -53,6 +53,7 @@ const setup = () => {
 }
 
 const filterLists = async (snapshot) => {
+    console.log("in filterLists", snapshot);
     // removes blacklisted addresses, all the accounts added to blacklist.json file
     // will be filtered out of the snapshot
     const filteredSnapshot = blacklist && blacklist.accounts && blacklist.accounts.length > 0 ?
