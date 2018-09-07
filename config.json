@@ -3,7 +3,7 @@
   "network":"http://mainnet.eoscalgary.io",
   "tokenAccount":"eoscafekorea",
   "privateKey": "a",
-  "symbol":"DAB",
+  "symbol":"PUB",
   "ratio":1,
   "memo":"DAB testing",
   "batchSize":1,
