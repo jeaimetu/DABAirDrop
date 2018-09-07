@@ -45,7 +45,7 @@ const checkAccountVote2 = async(account) => {
 
 
 
-    const dbsync = async () => {
+    const dbsync = async (tupled) => {
         console.log("in test async");
         const client = await MongoClient.connect(url);
 
@@ -72,7 +72,7 @@ const checkAccountVote2 = async(account) => {
 exports.test = async(tupled) => {
     //let finalResult = [];
     console.log("in test");
-    dbsync();
+    dbsync(tupled);
        
     //return tupled;
     //return finalResult;
