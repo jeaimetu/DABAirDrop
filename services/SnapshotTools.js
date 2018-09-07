@@ -84,7 +84,7 @@ exports.csvToJson = (csv) => {
 
     // Formatting to {account, amount}
     tupled = tupled.reduce((acc, e, i) => {
-        if(i % 2 === 0) acc.push({account:e, amount:tupled[i+1]});
+        if(i % 3 === 0) acc.push({time : e, account:tupled[i+1], amount:tupled[i+2]});
         return acc;
     }, []);    
     
