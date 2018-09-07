@@ -45,7 +45,7 @@ const checkAccountVote2 = async(account) => {
 
 
 exports.test = async(tupled) => {
-    MongoClient.connect(url, (err, db) => {
+    async r = MongoClient.connect(url, (err, db) => {
         let finalResult = [];
     for(let i = 0; i < tupled.length; i++){
         const isVote = await checkAccountVote(tupled[i].account);
