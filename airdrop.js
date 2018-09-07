@@ -129,8 +129,11 @@ const run = async () => {
         process.exit();
     }
 
+    console.log("calling snapshot");
     const snapshot = await SnapshotTools.getCSV('20180906_account_snapshot.csv');
+    console.log("calling filter");
     const initialAccountBalances = SnapshotTools.csvToJson(snapshot);
+    console.log("calling balance");
     const accountBalances = await filterLists(initialAccountBalances);
     //const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
     const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
@@ -140,6 +143,7 @@ const run = async () => {
 
     //check voting info and set amount in accordance with that
     //calling test(ratioBalances)
+    console.log("calling voting check");
     SnapshotTools.test(ratioBalances);
     
     const ram = await EOSTools.estimateRAM(accountBalances, config);
