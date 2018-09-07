@@ -46,6 +46,7 @@ const checkAccountVote2 = async(account) => {
 
 exports.test = async(tupled) => {
     let finalResult = [];
+    console.log("in test");
     (async () => {
         const client = await MongoClient.connect(url,
               {useNewUrlParser: true });
@@ -65,6 +66,7 @@ exports.test = async(tupled) => {
              
             const myObj = {account : tupled[i].account, amount :  amount, idx : i};
             const res = await db.collection('snapshot0907').insertOne(myObj);
+            console.log(`res => ${JSON.stringify(res)}`);
             client.close();   
         }
     });         
