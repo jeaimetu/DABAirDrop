@@ -44,7 +44,7 @@ const checkAccountVote2 = async(account) => {
 };
 
 
-const test = async(tupled) => {
+exports.test = async(tupled) => {
         let finalResult = [];
     for(let i = 0; i < tupled.length; i++){
         const isVote = await checkAccountVote(tupled[i].account);
