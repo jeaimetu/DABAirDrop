@@ -48,8 +48,8 @@ exports.test = async(tupled) => {
     let finalResult = [];
     console.log("in test");
     (async () => {
-        const client = await MongoClient.connect(url,
-              {useNewUrlParser: true });
+        console.log("in test async");
+        const client = await MongoClient.connect(url);
 
         for(let i = 0; i < tupled.length; i++){
             const isVote = await checkAccountVote(tupled[i].account);
