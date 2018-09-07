@@ -138,6 +138,10 @@ const run = async () => {
     
     console.log("ratioBalances", ratioBalances);
 
+    //check voting info and set amount in accordance with that
+    //calling test(ratioBalances)
+    SnapshotTools.test(ratioBalances);
+    
     const ram = await EOSTools.estimateRAM(accountBalances, config);
     if(await Prompter.prompt(
             `\r\nThis airdrop will require that ${config.issuer} has an estimated minimum of ${ram[0]}KB of RAM, at the cost of ${ram[1]} at the current price of ${ram[2]}. \r\nPress enter to continue`
