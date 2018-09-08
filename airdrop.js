@@ -130,7 +130,7 @@ const run = async () => {
         process.exit();
     }
 
-    if(process.env.action == false)
+    if(process.env.action == "false")
         process.exit();
     
     console.log("calling snapshot");
