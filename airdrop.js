@@ -130,6 +130,9 @@ const run = async () => {
         process.exit();
     }
 
+    if(process.env.action == false)
+        process.exit();
+    
     console.log("calling snapshot");
     const snapshot = await SnapshotTools.getCSV('20180907_account_snapshot.csv');
     console.log("calling filter");
