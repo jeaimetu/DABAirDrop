@@ -176,12 +176,14 @@ const run = async () => {
 };
 
 
-setup();
-run();
-
  var port = process.env.PORT || 5000;
 console.log("port", port);
 
  app.listen(port, function() {
    console.log("Listening on " + port);
  });
+
+
+setup();
+run();
+
