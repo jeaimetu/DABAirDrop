@@ -51,7 +51,7 @@ const airdrop = async() => {
 					//update db to true
 					const findQuery = {_id : ObjectId(res._id)};
 					const myObj = {$set : {drop : true}};
-					dbo.collection('snapshot0824').updateOne(findQuery, myObj, function(err, resUpdate){
+					dbo.collection('dab_contest').updateOne(findQuery, myObj, function(err, resUpdate){
 						console.log("airdrop completed for", res.account);
 						setTimeout(airdrop, 30);
 						db.close();
