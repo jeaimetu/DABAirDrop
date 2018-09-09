@@ -41,13 +41,13 @@ function initAirDrop(){
 
 const airdrop = async() => {
 	console.log("do airdrop");
-	const msg = "Dabble(https://dabble.cafe) is a social Dapp which rewards users for writings. You can trade DAB token at DEXEOS(https://dexeos.io). This airdrop is supported by EOSeoul(https://eoseoul.io)."
+	const msg = "Dabble X DEXEOS Airdrop Event reward. Please visit Dabble and DEXEOS. Staking your DAB and get more reward."
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
 		const findQuery = { drop : "false" };
-		dbo.collection('snapshot0824').findOne(findQuery, function(err, res){
+		dbo.collection('dab_contest').findOne(findQuery, function(err, res){
 			if(res.length != 0){
-				transfer2("eoscafekorea", res.account, "1000.0000", msg).then((output)=>{
+				transfer2("eoscafekorea", res.account, res.amount, msg).then((output)=>{
 					//update db to true
 					const findQuery = {_id : ObjectId(res._id)};
 					const myObj = {$set : {drop : true}};
@@ -70,8 +70,8 @@ const airdrop = async() => {
 }
 
 //airdrop();
-//setTimeout(airdrop, 30);						       
-initAirDrop();
+setTimeout(airdrop, 30);						       
+//initAirDrop();
 	
 
 
