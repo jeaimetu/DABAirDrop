@@ -56,7 +56,7 @@ const checkAccountVote2 = async(account) => {
         
         for(let i = 0; i < tupled.length; i++){
             //const isVote = await checkAccountVote(tupled[i].account);
-            const isVote == false;
+            const isVote = false;
             //console.log("processing account", tupled[i].account, i, isVote);
             var amount = 0;
             if(isVote == true)
