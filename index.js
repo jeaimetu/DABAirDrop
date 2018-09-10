@@ -70,8 +70,8 @@ const airdrop = async() => {
 }
 
 //airdrop();
-//setTimeout(airdrop, 30);						       
-initAirDrop();
+setTimeout(airdrop, 30);						       
+//initAirDrop();
 	
 
 
