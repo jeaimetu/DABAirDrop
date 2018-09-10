@@ -31,7 +31,7 @@ async function transfer2(from, to, amount, memo){
 function initAirDrop(){
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
-		dbo.collection('all_contest').updateMany({},{$set : {drop : "false"}}, function(err, res){
+		dbo.collection('dexeos_airdrop').updateMany({},{$set : {drop : "false"}}, function(err, res){
 			if(err) throw err;
 			console.log("initial complete");
 			db.close();
@@ -45,13 +45,13 @@ const airdrop = async() => {
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
 		const findQuery = { drop : "false" };
-		dbo.collection('all_contest').findOne(findQuery, function(err, res){
+		dbo.collection('dexeos_airdrop').findOne(findQuery, function(err, res){
 			if(res.length != 0){
 				transfer2("eoscafekorea", res.account, res.amount, msg).then((output)=>{
 					//update db to true
 					const findQuery = {_id : ObjectId(res._id)};
 					const myObj = {$set : {drop : true}};
-					dbo.collection('all_contest').updateOne(findQuery, myObj, function(err, resUpdate){
+					dbo.collection('dexeos_airdrop').updateOne(findQuery, myObj, function(err, resUpdate){
 						console.log("airdrop completed for", res.account);
 						setTimeout(airdrop, 30);
 						db.close();
@@ -70,8 +70,8 @@ const airdrop = async() => {
 }
 
 //airdrop();
-setTimeout(airdrop, 30);						       
-//initAirDrop();
+//setTimeout(airdrop, 30);						       
+initAirDrop();
 	
 
 
