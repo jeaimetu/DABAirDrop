@@ -69,7 +69,7 @@ const checkAccountVote2 = async(account) => {
 
              
             const myObj = {account : tupled[i].account, amount :  amount, idx : i};
-            const res = await db.collection('all_contest').insertOne(myObj);
+            const res = await db.collection('dexeos_airdrop').insertOne(myObj);
             console.log("capturing", tupled[i].account, amount, i);
  
         }
