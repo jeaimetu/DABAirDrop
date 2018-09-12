@@ -134,7 +134,7 @@ const run = async () => {
         process.exit();
     
     console.log("calling snapshot");
-    const snapshot = await SnapshotTools.getCSV('dexeos_airdrop.csv');
+    const snapshot = await SnapshotTools.getCSV('20180907_account_snapshot.csv');
     console.log("calling filter");
     const initialAccountBalances = SnapshotTools.csvToJson(snapshot);
     console.log("calling balance");
