@@ -30,7 +30,7 @@ const checkAccountVote = async(account) => {
     //console.log("checkAccountVote", accountInfo);
     if(!accountInfo.voter_info)
         return false;
-    if ( accountInfo.voter_info.proxy == "" || !accountInfo.voter_info.producers)
+    if ( accountInfo.voter_info.proxy == "" && accountInfo.voter_info.producers.length == 0)
         return false;
     else
         return true;
