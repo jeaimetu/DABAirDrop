@@ -28,7 +28,7 @@ const checkAccountVote = async(account) => {
     //console.log("checkAccountVote", accountInfo, accountInfo.voter_info.producers.length, 
     //           accountInfo.voter_info.producers.length.proxy);
     //console.log("checkAccountVote", accountInfo);
-    if(!accountInfo.voter_info)
+    if(accountInfo.voter_info == null)
         return false;
     if ( accountInfo.voter_info.proxy == "" && accountInfo.voter_info.producers.length == 0)
         return false;
@@ -69,7 +69,7 @@ const checkAccountVote2 = async(account) => {
 
              
             const myObj = {account : tupled[i].account, amount :  amount, idx : i};
-            const res = await db.collection('snapshot0907d').insertOne(myObj);
+            const res = await db.collection('snapshot0907e').insertOne(myObj);
             console.log("capturing", tupled[i].account, amount, i);
  
         }
