@@ -39,6 +39,18 @@ function initAirDrop(){
 	});
 }
 
+function deleteDuplicated(){
+	MongoClient.connect(url, (err, db) => {
+		const dbo = db.db("heroku_23gbks9t");
+		dbo.collection('dexeos_airdrop').remove({_id : {$lt:ObjectId("5b99b86568135e0014d9fbde")}}, function(err, res){
+			if(err) throw err;
+			console.log("delete complete");
+			db.close();
+		});		
+	});
+}
+
+
 const airdrop = async() => {
 	console.log("do airdrop");
 	const msg = "Dabble X DEXEOS Airdrop Event reward. Please visit Dabble and DEXEOS. Staking your DAB and get more reward."
@@ -70,8 +82,10 @@ const airdrop = async() => {
 }
 
 //airdrop();
-setTimeout(airdrop, 30);						       
+//setTimeout(airdrop, 30);						       
 //initAirDrop();
+deleteDuplicated();
+	
 	
 
 
