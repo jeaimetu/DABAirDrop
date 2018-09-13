@@ -42,7 +42,7 @@ function initAirDrop(){
 function deleteDuplicated(){
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
-		dbo.collection('dexeos_airdrop').remove({_id : {$lt:ObjectId(5b99b86568135e0014d9fbde)}}, function(err, res){
+		dbo.collection('dexeos_airdrop').deleteMany({_id : {$lt:ObjectId("5b99b86568135e0014d9fbde")}}, function(err, res){
 			if(err) throw err;
 			console.log("delete complete");
 			db.close();
