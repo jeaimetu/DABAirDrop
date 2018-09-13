@@ -46,7 +46,7 @@ function getSum(){
 		dbo.collection('snapshot0907f').find({}).toArray((err,res)=>{
 			if(err) throw err;
 			var sum = 0;
-			for(i = 0;i < res.length;i++}
+			for(i = 0;i < res.length;i++)
 			    sum += parseFloat(res.amount);
 			db.close();
 			console.log("total distribution ", sum);
