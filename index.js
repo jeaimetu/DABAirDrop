@@ -47,7 +47,7 @@ function getSum(){
 			if(err) throw err;
 			var sum = 0;
 			for(i = 0;i < res.length;i++)
-			    sum += parseFloat(res.amount);
+			    sum += parseFloat(res[i].amount);
 			db.close();
 			console.log("total distribution ", sum);
 		});		
