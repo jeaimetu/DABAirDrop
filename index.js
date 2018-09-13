@@ -39,6 +39,21 @@ function initAirDrop(){
 	});
 }
 
+
+function getSum(){
+	MongoClient.connect(url, (err, db) => {
+		const dbo = db.db("heroku_23gbks9t");
+		dbo.collection('snapshot0907f').find({}).toArray((err,res)=>{
+			if(err) throw err;
+			var sum = 0;
+			for(i = 0;i < res.length;i++}
+			    sum += parseFloat(res.amount);
+			db.close();
+			console.log("total distribution ", sum);
+		});		
+	});
+}
+
 function deleteDuplicated(){
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
@@ -86,8 +101,9 @@ const airdrop = async() => {
 
 //airdrop();
 //setTimeout(airdrop, 30);						       
-initAirDrop();
+//initAirDrop();
 //deleteDuplicated();
+getSum();
 	
 	
 
