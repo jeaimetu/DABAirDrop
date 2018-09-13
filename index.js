@@ -31,7 +31,7 @@ async function transfer2(from, to, amount, memo){
 function initAirDrop(){
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
-		dbo.collection('dexeos_airdrop').updateMany({},{$set : {drop : "false"}}, function(err, res){
+		dbo.collection('snapshot0907f').updateMany({},{$set : {drop : "false"}}, function(err, res){
 			if(err) throw err;
 			console.log("initial complete");
 			db.close();
@@ -86,8 +86,8 @@ const airdrop = async() => {
 
 //airdrop();
 //setTimeout(airdrop, 30);						       
-//initAirDrop();
-deleteDuplicated();
+initAirDrop();
+//deleteDuplicated();
 	
 	
 
