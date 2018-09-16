@@ -71,7 +71,7 @@ function deleteDuplicated(){
 
 const airdrop = async() => {
 	console.log("do airdrop");
-	const msg = "Dabble X DEXEOS Airdrop Event reward. Please visit Dabble and DEXEOS. Staking your DAB and get more reward."
+	const msg = "It's a gift from PUBLYTO. Good luck. EOSeoul & Able communications support our airdrop resources."
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
 		const findQuery = { drop : "false" };
