@@ -86,10 +86,14 @@ const airdrop = async() => {
 						setTimeout(airdrop, 30);
 						db.close();
 					});
-				}).catch((err) =>{
-					console.log("trasnfer error", res.account);
-					setTimeout(airdrop, 30);
-					db.close();
+				}).catch((err) =>{					
+					const findQuery = {_id : ObjectId(res._id)};
+					const myObj = {$set : {drop : "error"}};
+					dbo.collection('snapshot0907f').updateOne(findQuery, myObj, function(err, resUpdate){
+						console.log("trasnfer error", res.account);						
+						setTimeout(airdrop, 30);
+						db.close();
+					});
 				});
 			}else{
 				console.log("nothing remaining airdrop");
