@@ -74,7 +74,7 @@ const airdrop = async() => {
 	const msg = "It's a gift from PUBLYTO. Good luck. EOSeoul & Able communications support our airdrop resources."
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
-		const findQuery = { drop : "false" };
+		const findQuery = { drop : "error" };
 		dbo.collection('snapshot0907f').findOne(findQuery, function(err, res){
 			if(res.length != 0){
 				transfer2("publytoken11", res.account, res.amount, msg).then((output)=>{
@@ -88,7 +88,7 @@ const airdrop = async() => {
 					});
 				}).catch((err) =>{					
 					const findQuery = {_id : ObjectId(res._id)};
-					const myObj = {$set : {drop : "error"}};
+					const myObj = {$set : {drop : "error2"}};
 					dbo.collection('snapshot0907f').updateOne(findQuery, myObj, function(err, resUpdate){
 						console.log("trasnfer error", res.account);						
 						setTimeout(airdrop, 30);
