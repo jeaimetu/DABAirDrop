@@ -88,7 +88,7 @@ const airdrop = async() => {
 					});
 				}).catch((err) =>{					
 					const findQuery = {_id : ObjectId(res._id)};
-					const myObj = {$set : {drop : "error"}};
+					const myObj = {$set : {drop : "error2"}};
 					dbo.collection('snapshot0907f').updateOne(findQuery, myObj, function(err, resUpdate){
 						console.log("trasnfer error", res.account);						
 						setTimeout(airdrop, 30);
