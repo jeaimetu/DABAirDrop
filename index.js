@@ -71,7 +71,7 @@ function deleteDuplicated(){
 
 
 const airdrop = async() => {
-	console.log("do airdrop");
+	//console.log("do airdrop");
 	const msg = "Congratulations to those who have received TOOKTOOK Snowdrop (Airdrop). TOOKTOOK is the 3(sec) Visual Message Platform based on blockchain. TOOKTOOK will be listed on CHAINCE(chaince.com) on Dec. 7, 2018. You can meet TOOKTOOK(tooktook.io) in Q1.2019."
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
@@ -106,18 +106,18 @@ const airdrop = async() => {
 
 //airdrop();
 					       
-initAirDrop();
+//initAirDrop();
 //deleteDuplicated();
 //getSum();
 
-/*
+
     if(process.env.action == "false"){
 	    console.log("do nothing");
         process.exit();
     }else{
 	setTimeout(airdrop, 30);	
     }
-*/	
+
 	
 
 
