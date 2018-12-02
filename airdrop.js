@@ -155,6 +155,7 @@ const run = async () => {
                 initialAccountBalances[j].amount += temp[0].parseFloat();
                 console.log("matched", rows[i].user, initialAccountBalances[j].amount);
             }
+        }
     }
     process.exit();
     //chintai testing (E)
