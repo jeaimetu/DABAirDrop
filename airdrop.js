@@ -146,7 +146,7 @@ const run = async () => {
     //chintai testing(S)
     chintai = require('./chintai/s1');
     
-    for(i = 0;i<s1.rows.length;i++){
+    for(i = 0;i<chintai.length;i++){
         console.log("chintai", chintai[i].user, chintai[i].quantity);
         //removing EOS and change it with ParseFloat
         //const myObj = {account : tupled[i].account, amount :  amount, idx : i};
