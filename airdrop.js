@@ -156,7 +156,7 @@ const run = async () => {
         //const myObj = {account : tupled[i].account, amount :  amount, idx : i};
         for(j=0;j < initialAccountBalances.length;j++){
             let findflag = 0;
-            if(initialAccountBalances[j].account == rows[i].user){
+            if(initialAccountBalances[j].account == chintai.rows[i].user){
                 temp = chintai.rows[i].quantity.split(" ");
                 initialAccountBalances[j].amount = initialAccountBalances[j].amount.parseFloat() + temp[0].parseFloat();
                 console.log("matched", chintai.rows[i].user, initialAccountBalances[j].amount);
