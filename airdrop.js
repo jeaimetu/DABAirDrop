@@ -144,18 +144,24 @@ const run = async () => {
     
     //adding chintai amount to initial list
     //chintai testing(S)
+    console.log("calling chintai list");
     chintai = require('./chintai/s1');
-    
+    console.log("chintai length", chinta.length);
     for(i = 0;i<chintai.length;i++){
         console.log("chintai", chintai[i].user, chintai[i].quantity);
         //removing EOS and change it with ParseFloat
         //const myObj = {account : tupled[i].account, amount :  amount, idx : i};
         for(j=0;j < initialAccountBalances.length;j++){
+            let findflag = 0;
             if(initialAccountBalances[j].account == rows[i].user){
                 temp = chintai[i].quantity.split(" ");
                 initialAccountBalances[j].amount = initialAccountBalances[j].amount.parseFloat() + temp[0].parseFloat();
                 console.log("matched", chintai[i].user, initialAccountBalances[j].amount);
+                findflag = 1;
+                break;
             }
+            if(findflag == 0)
+                console.log("can not find", chintai[i].user);
         }
     }
     
