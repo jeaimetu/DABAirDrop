@@ -130,7 +130,7 @@ const run = async () => {
         process.exit();
     }
     
-    //chintai testing
+
 
     if(process.env.action == "false"){
         console.log("do nothing");
@@ -141,6 +141,24 @@ const run = async () => {
     const snapshot = await SnapshotTools.getCSV('20181128_account_snapshot.csv');
     console.log("calling filter");
     const initialAccountBalances = SnapshotTools.csvToJson(snapshot);
+    
+    //adding chintai amount to initial list
+    //chintai testing(S)
+    config = require('./chintai/s1');
+    for(i = 0;i<s1.rows.length;i++){
+        console.log("chintai", rows[i].user, rows[i].quantity);
+        //removing EOS and change it with ParseFloat
+        //const myObj = {account : tupled[i].account, amount :  amount, idx : i};
+        for(j=0;j < initialAccountBalances.length;j++){
+            if(initialAccountBalances[j].account == rows[i].user){
+                temp = rows[i].quantity.split(" ");
+                initialAccountBalances[j].amount += temp[0].parseFloat();
+                console.log("matched", rows[i].user, initialAccountBalances[j].amount);
+            }
+    }
+    process.exit();
+    //chintai testing (E)
+    
     console.log("calling balance");
     const accountBalances = await filterLists(initialAccountBalances);
     //const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
