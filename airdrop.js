@@ -129,19 +129,23 @@ const run = async () => {
         logger.error(`\r\nCould not find ${config.symbol} token on the eosio.token contract at ${config.tokenAccount}!`);
         process.exit();
     }
+    
+    //chintai testing
 
-    if(process.env.action == "false")
+    if(process.env.action == "false"){
+        console.log("do nothing");
         process.exit();
+    }
     
     console.log("calling snapshot");
-    const snapshot = await SnapshotTools.getCSV('20180907_account_snapshot.csv');
+    const snapshot = await SnapshotTools.getCSV('20181128_account_snapshot.csv');
     console.log("calling filter");
     const initialAccountBalances = SnapshotTools.csvToJson(snapshot);
     console.log("calling balance");
     const accountBalances = await filterLists(initialAccountBalances);
     //const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
     const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
-                          .filter(tuple => tuple.amount >= 1);
+                          .filter(tuple => tuple.amount >= 0.5); //check DB later
     
     //console.log("ratioBalances", ratioBalances);
 
@@ -160,6 +164,9 @@ const run = async () => {
     if(await Prompter.prompt(
         `\r\nYou are about to airdrop ${total} ${config.symbol} tokens on ${accountBalances.length} accounts. \r\nPress enter to continue`
     ) !== '') process.exit();
+    
+    //force exit for testing
+    process.exit();
 
     logger.warn('\r\n\------------------------------------------------------------------\r\n');
     const lastAccountDropped = db.get('lastAccountDropped').value();
