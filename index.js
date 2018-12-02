@@ -31,7 +31,7 @@ async function transfer2(from, to, amount, memo){
 function initAirDrop(){
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
-		dbo.collection('snapshot0907f').updateMany({},{$set : {drop : "false"}}, function(err, res){
+		dbo.collection('snapshot1128b').updateMany({},{$set : {drop : "false"}}, function(err, res){
 			if(err) throw err;
 			console.log("initial complete");
 			db.close();
@@ -43,7 +43,7 @@ function initAirDrop(){
 function getSum(){
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
-		dbo.collection('snapshot0907f').find({}).toArray((err,res)=>{
+		dbo.collection('snapshot1128b').find({}).toArray((err,res)=>{
 			if(err) throw err;
 			var sum = 0;
 			for(i = 0;i < res.length;i++)
@@ -57,7 +57,7 @@ function getSum(){
 function deleteDuplicated(){
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
-		dbo.collection('snapshot0907f').deleteMany({_id : {$gte: ObjectId("5b99b86568135e0014d9fbde")}}, function(err, res){
+		dbo.collection('snapshot1128b').deleteMany({_id : {$gte: ObjectId("5b99b86568135e0014d9fbde")}}, function(err, res){
 		//dbo.collection('dexeos_airdrop').findOne({idx : 0}, function(err, res){
 			if(err) throw err;
 			console.log(err);
@@ -75,21 +75,21 @@ const airdrop = async() => {
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
 		const findQuery = { drop : "false" };
-		dbo.collection('snapshot0907f').findOne(findQuery, function(err, res){
+		dbo.collection('snapshot1128b').findOne(findQuery, function(err, res){
 			if(res.length != 0){
 				transfer2("taketooktook", res.account, res.amount, msg).then((output)=>{
 					//update db to true
 					const findQuery = {_id : ObjectId(res._id)};
 					const myObj = {$set : {drop : true}};
-					dbo.collection('snapshot0907f').updateOne(findQuery, myObj, function(err, resUpdate){
-						console.log("airdrop completed for", res.account);
+					dbo.collection('snapshot1128b').updateOne(findQuery, myObj, function(err, resUpdate){
+						console.log(".");
 						setTimeout(airdrop, 30);
 						db.close();
 					});
 				}).catch((err) =>{					
 					const findQuery = {_id : ObjectId(res._id)};
 					const myObj = {$set : {drop : "error"}};
-					dbo.collection('snapshot0907f').updateOne(findQuery, myObj, function(err, resUpdate){
+					dbo.collection('snapshot1128b').updateOne(findQuery, myObj, function(err, resUpdate){
 						console.log("trasnfer error", res.account);						
 						setTimeout(airdrop, 30);
 						db.close();
@@ -105,7 +105,7 @@ const airdrop = async() => {
 
 //airdrop();
 					       
-//initAirDrop();
+initAirDrop();
 //deleteDuplicated();
 //getSum();
 
