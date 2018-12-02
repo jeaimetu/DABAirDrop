@@ -159,7 +159,7 @@ const run = async () => {
             findflag = 0;
             if(initialAccountBalances[j].account == chintai.rows[i].user){
                 temp = chintai.rows[i].quantity.split(" ");
-                initialAccountBalances[j].amount = initialAccountBalances[j].amount.parseFloat() + temp[0].parseFloat();
+                initialAccountBalances[j].amount = parseFloat(initialAccountBalances[j].amount) + parseFloat(temp[0]);
                 console.log("matched", chintai.rows[i].user, initialAccountBalances[j].amount);
                 findflag = 1;
                 break;
