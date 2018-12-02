@@ -7,6 +7,6 @@
   "ratio":0.5,
   "memo":"DAB testing",
   "batchSize":1,
-  "limitCap":50000,
+  "limitCap":100000,
   "decimals":4
 }
