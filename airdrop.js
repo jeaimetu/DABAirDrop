@@ -144,7 +144,8 @@ const run = async () => {
     
     //adding chintai amount to initial list
     //chintai testing(S)
-    config = require('./chintai/s1');
+    chintai = require('./chintai/s1');
+    /*
     for(i = 0;i<s1.rows.length;i++){
         console.log("chintai", rows[i].user, rows[i].quantity);
         //removing EOS and change it with ParseFloat
@@ -157,6 +158,7 @@ const run = async () => {
             }
         }
     }
+    */
     process.exit();
     //chintai testing (E)
     
