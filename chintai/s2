@@ -7991,14 +7991,6 @@
       "order_creation_time": "1541054118000000",
       "airdrop_tokens": [],
       "autorenew": 0
-    },{
-      "id": 2904947128,
-      "user": "jcx112233445",
-      "quantity": "320.0000 EOS",
-      "duration": 604800,
-      "order_creation_time": "1543386646500000",
-      "airdrop_tokens": [],
-      "autorenew": 0
     }
   ],
   "more": true
