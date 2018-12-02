@@ -64,7 +64,7 @@ const checkAccountVote2 = async(account) => {
             else
                 amount = (1 * tupled[i].amount).toFixed(4);*/
             let amount;
-            amount = tupled[i].amount).toFixed(4);
+            amount = tupled[i].amount.toFixed(4);
         
 
             //finalResult.push({account : tupled[i].account, amount : amount});
