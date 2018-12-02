@@ -91,8 +91,8 @@ const filterLists = async (snapshot) => {
         if(filteredSnapshot.length != snapshot.length) {
             logger.warn(`You are limitting token holders to receive a max airdrop corresponding to ${config.limitCap} EOS`);
 
-            if (await Prompter.prompt(`\r\nPress enter if you agree with above addresses tokens airdrop cap and whitelisted ones`) !== '')
-                process.exit()
+            //if (await Prompter.prompt(`\r\nPress enter if you agree with above addresses tokens airdrop cap and whitelisted ones`) !== '')
+            //    process.exit()
         }
 
         return cappedSnapshot;
