@@ -3,10 +3,10 @@
   "network":"http://mainnet.eoscalgary.io",
   "tokenAccount":"publytoken11",
   "privateKey": "a",
-  "symbol":"PUB",
-  "ratio":1,
+  "symbol":"TOOK",
+  "ratio":0.5,
   "memo":"DAB testing",
   "batchSize":1,
-  "limitCap":0,
+  "limitCap":5000,
   "decimals":4
 }
