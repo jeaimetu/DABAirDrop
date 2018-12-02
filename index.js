@@ -109,13 +109,14 @@ initAirDrop();
 //deleteDuplicated();
 //getSum();
 
+/*
     if(process.env.action == "false"){
 	    console.log("do nothing");
         process.exit();
     }else{
 	setTimeout(airdrop, 30);	
     }
-	
+*/	
 	
 
 
