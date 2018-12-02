@@ -145,11 +145,11 @@ const run = async () => {
     //adding chintai amount to initial list
     //chintai testing(S)
     console.log("calling chintai list");
-    ct = require('./chintai/s1.json');
-    console.log("inputraw", ct);
-    chintai = JSON.parse(ct.rows);
-    console.log("input", chintai);
-    console.log("chintai length", chintai.length);
+    chintai = require('./chintai/s1.json');
+    //console.log("inputraw", ct);
+    //chintai = JSON.parse(ct.rows);
+    //console.log("input", chintai);
+    console.log("chintai length", chintai.length, chintai.rows.length);
     for(i = 0;i<chintai.length;i++){
         console.log("chintai", chintai[i].user, chintai[i].quantity);
         //removing EOS and change it with ParseFloat
