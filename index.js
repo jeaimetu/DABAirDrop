@@ -121,7 +121,7 @@ const airdrop = async() => {
 
 //airdrop();
 					       
-initAirDrop();
+initAirDrop2();
 //deleteDuplicated();
 //getSum();
 
