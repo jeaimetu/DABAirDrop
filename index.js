@@ -81,7 +81,7 @@ const airdrop = async() => {
 				transfer2("taketooktook", res.account, res.amount, msg).then((output)=>{
 					//update db to true
 					const findQuery = {_id : ObjectId(res._id)};
-					const myObj = {$set : {drop : true}};
+					const myObj = {$set : {drop : "true"}};
 					dbo.collection('snapshot1128b').updateOne(findQuery, myObj, function(err, resUpdate){
 						console.log(".");
 						setTimeout(airdrop, 30);
