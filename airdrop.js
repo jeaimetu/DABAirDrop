@@ -145,20 +145,20 @@ const run = async () => {
     //adding chintai amount to initial list
     //chintai testing(S)
     chintai = require('./chintai/s1');
-    /*
+    
     for(i = 0;i<s1.rows.length;i++){
-        console.log("chintai", rows[i].user, rows[i].quantity);
+        console.log("chintai", chintai[i].user, chintai[i].quantity);
         //removing EOS and change it with ParseFloat
         //const myObj = {account : tupled[i].account, amount :  amount, idx : i};
         for(j=0;j < initialAccountBalances.length;j++){
             if(initialAccountBalances[j].account == rows[i].user){
-                temp = rows[i].quantity.split(" ");
-                initialAccountBalances[j].amount += temp[0].parseFloat();
-                console.log("matched", rows[i].user, initialAccountBalances[j].amount);
+                temp = chintai[i].quantity.split(" ");
+                initialAccountBalances[j].amount = initialAccountBalances[j].amount.parseFloat() + temp[0].parseFloat();
+                console.log("matched", chintai[i].user, initialAccountBalances[j].amount);
             }
         }
     }
-    */
+    
     process.exit();
     //chintai testing (E)
     
