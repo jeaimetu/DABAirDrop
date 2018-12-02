@@ -25,7 +25,7 @@ eos = Eos(config);
 
 async function transfer2(from, to, amount, memo){
 	const myaccount = await eos.contract(from);
-	await myaccount.transfer(from, to, amount + " " + "PUB",memo);
+	await myaccount.transfer(from, to, amount + " " + "TOOK",memo);
 }
 
 function initAirDrop(){
@@ -71,13 +71,13 @@ function deleteDuplicated(){
 
 const airdrop = async() => {
 	console.log("do airdrop");
-	const msg = "It's a gift from PUBLYTO. Good luck. EOSeoul & Able communications support our airdrop resources."
+	const msg = "Congratulations to those who have received TOOKTOOK Snowdrop (Airdrop). TOOKTOOK is the 3(sec) Visual Message Platform based on blockchain. TOOKTOOK will be listed on CHAINCE(chaince.com) on Dec. 7, 2018. You can meet TOOKTOOK(tooktook.io) in Q1.2019."
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
 		const findQuery = { drop : "false" };
 		dbo.collection('snapshot0907f').findOne(findQuery, function(err, res){
 			if(res.length != 0){
-				transfer2("publytoken11", res.account, res.amount, msg).then((output)=>{
+				transfer2("taketooktook", res.account, res.amount, msg).then((output)=>{
 					//update db to true
 					const findQuery = {_id : ObjectId(res._id)};
 					const myObj = {$set : {drop : true}};
