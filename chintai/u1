@@ -1,5 +1,4 @@
-{
-  "rows": [{
+[{
       "id": 42657302,
       "user": "heydamrzgege",
       "quantity": "10.0000 EOS",
@@ -2255,6 +2254,4 @@
       "active": 1,
       "autorenew": 0
     }
-  ],
-  "more": false
-}
+  ]
