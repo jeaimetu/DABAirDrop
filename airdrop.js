@@ -146,7 +146,8 @@ const run = async () => {
     //chintai testing(S)
     console.log("calling chintai list");
     ct = require('./chintai/s1.json');
-    chintai = JSON.parse(ct);
+    console.log("inputraw", ct);
+    chintai = JSON.parse(ct.rows);
     console.log("input", chintai);
     console.log("chintai length", chintai.length);
     for(i = 0;i<chintai.length;i++){
