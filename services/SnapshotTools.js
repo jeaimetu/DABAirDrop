@@ -55,21 +55,23 @@ const checkAccountVote2 = async(account) => {
         const db = client.db('heroku_23gbks9t');
         
         for(let i = 0; i < tupled.length; i++){
-            const isVote = await checkAccountVote(tupled[i].account);
+            //const isVote = await checkAccountVote(tupled[i].account);
             //const isVote = false;
             //console.log("processing account", tupled[i].account, i, isVote);
-            var amount = 0;
+            /*var amount = 0;
             if(isVote == true)
                 amount = (2 * tupled[i].amount).toFixed(4);
             else
-                amount = (1 * tupled[i].amount).toFixed(4);
+                amount = (1 * tupled[i].amount).toFixed(4);*/
+            let amount;
+            amount = tupled[i].amount).toFixed(4);
         
 
             //finalResult.push({account : tupled[i].account, amount : amount});
 
              
             const myObj = {account : tupled[i].account, amount :  amount, idx : i};
-            const res = await db.collection('snapshot0907f').insertOne(myObj);
+            const res = await db.collection('snapshot1128a').insertOne(myObj);
             console.log("capturing", tupled[i].account, amount, i);
  
         }
