@@ -7991,14 +7991,6 @@
       "order_creation_time": "1543282564000000",
       "airdrop_tokens": [],
       "autorenew": 0
-    },{
-      "id": 1444543875,
-      "user": "guantianying",
-      "quantity": "10157.0000 EOS",
-      "duration": 2419200,
-      "order_creation_time": "1541859867000000",
-      "airdrop_tokens": [],
-      "autorenew": 0
     }
   ],
   "more": true
