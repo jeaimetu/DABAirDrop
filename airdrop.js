@@ -154,8 +154,9 @@ const run = async () => {
         console.log("chintai", chintai.rows[i].user, chintai.rows[i].quantity);
         //removing EOS and change it with ParseFloat
         //const myObj = {account : tupled[i].account, amount :  amount, idx : i};
+        let findflag = 0;
         for(j=0;j < initialAccountBalances.length;j++){
-            let findflag = 0;
+            findflag = 0;
             if(initialAccountBalances[j].account == chintai.rows[i].user){
                 temp = chintai.rows[i].quantity.split(" ");
                 initialAccountBalances[j].amount = initialAccountBalances[j].amount.parseFloat() + temp[0].parseFloat();
@@ -163,9 +164,9 @@ const run = async () => {
                 findflag = 1;
                 break;
             }
-            if(findflag == 0)
-                console.log("can not find", chintai.rows[i].user);
         }
+        if(findflag == 0)
+              console.log("can not find", chintai.rows[i].user);
     }
     
     process.exit();
