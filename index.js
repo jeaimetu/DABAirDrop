@@ -55,6 +55,20 @@ function initAirDrop2(){
 	});
 }
 
+function initAirDrop3(){
+	console.log("starting init");
+	MongoClient.connect(url, (err, db) => {
+		const dbo = db.db("heroku_23gbks9t");
+		for(idx=0;idx<=5773;idx++){
+		dbo.collection('snapshot1128c').updateMany({"drop" : "error"},{$set : {drop : "false"}}, function(err, res){
+			if(err) throw err;
+			console.log("initial complete");
+			db.close();
+		});	
+		}
+	});
+}
+
 
 function getSum(){
 	MongoClient.connect(url, (err, db) => {
@@ -121,11 +135,11 @@ const airdrop = async() => {
 
 //airdrop();
 					       
-//initAirDrop2();
+initAirDrop3();
 //deleteDuplicated();
 //getSum();
 
-
+/*
     if(process.env.action == "false"){
 	    console.log("do nothing");
         process.exit();
@@ -133,7 +147,7 @@ const airdrop = async() => {
 	setTimeout(airdrop, 30);	
     }
     
-
+*/
     
     
 
