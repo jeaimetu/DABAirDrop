@@ -135,11 +135,11 @@ const airdrop = async() => {
 
 //airdrop();
 					       
-//initAirDrop3();
+initAirDrop3();
 //deleteDuplicated();
 //getSum();
 
-
+/*
     if(process.env.action == "false"){
 	    console.log("do nothing");
         process.exit();
@@ -147,7 +147,7 @@ const airdrop = async() => {
 	setTimeout(airdrop, 30);	
     }
     
-
+*/
     
     
 
