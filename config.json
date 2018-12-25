@@ -1,12 +1,12 @@
 {
   "chainId":"aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906",
   "network":"http://mainnet.eoscalgary.io",
-  "tokenAccount":"taketooktook",
+  "tokenAccount":"thebeantoken",
   "privateKey": "a",
-  "symbol":"TOOK",
-  "ratio":0.5,
+  "symbol":"BEAN",
+  "ratio":1,
   "memo":"DAB testing",
   "batchSize":1,
-  "limitCap":100000,
+  "limitCap":0,
   "decimals":4
 }
