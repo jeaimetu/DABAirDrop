@@ -138,9 +138,18 @@ const run = async () => {
     }
     
     console.log("calling snapshot");
-    const snapshot = await SnapshotTools.getCSV('20181128_account_snapshot.csv');
+    const snapshot = await SnapshotTools.getCSV('20181224_account_snapshot.csv');
     console.log("calling filter");
     const initialAccountBalances = SnapshotTools.csvToJson(snapshot);
+    
+    for(k=1;k<=14;k++){
+		fname = "./chintai20181225/" + "s" + k;
+		console.log("calling chintai list", fname);
+		chintai = require(fname);
+		console.log("chintai length", chintai.length, chintai.rows.length);
+	}
+	process.exit();
+		
     
     //adding chintai amount to initial list
     //chintai testing(S)
