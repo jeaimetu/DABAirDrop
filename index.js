@@ -139,6 +139,11 @@ const airdrop = async() => {
 //deleteDuplicated();
 //getSum();
 
+for(i=1;i<10;i++){
+    temp = "s"+i;
+    console.log(temp);
+}
+
 
     if(process.env.action == "false"){
 	    console.log("do nothing");
