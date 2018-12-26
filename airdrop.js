@@ -155,7 +155,7 @@ const run = async () => {
 				if(initialAccountBalances[j].account == chintai.rows[i].user){
                 	temp = chintai.rows[i].quantity.split(" ");
                 	initialAccountBalances[j].amount = parseFloat(initialAccountBalances[j].amount) + parseFloat(temp[0]);
-                	console.log("matched", chintai.rows[i].user, initialAccountBalances[j].amount);
+                	//console.log("matched", chintai.rows[i].user, initialAccountBalances[j].amount);
                 	findflag = 1;
                 	break;
             	}
@@ -178,7 +178,7 @@ const run = async () => {
 				if(initialAccountBalances[j].account == chintai.rows[i].user){
                 	temp = chintai.rows[i].quantity.split(" ");
                 	initialAccountBalances[j].amount = parseFloat(initialAccountBalances[j].amount) + parseFloat(temp[0]);
-                	console.log("matched", chintai.rows[i].user, initialAccountBalances[j].amount);
+                	//console.log("matched", chintai.rows[i].user, initialAccountBalances[j].amount);
                 	findflag = 1;
                 	break;
             	}
@@ -192,7 +192,7 @@ const run = async () => {
     const accountBalances = await filterLists(initialAccountBalances);
     //const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
     const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
-                          .filter(tuple => tuple.amount >= 100); //check DB later
+                          .filter(tuple => tuple.amount < 100); //check DB later
     
     //console.log("ratioBalances", ratioBalances);
 
