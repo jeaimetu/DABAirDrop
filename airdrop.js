@@ -143,7 +143,7 @@ const run = async () => {
     const initialAccountBalances = SnapshotTools.csvToJson(snapshot);
     
     for(k=1;k<=14;k++){
-		fname = "./chintai20181225/" + "s" + k;
+		fname = "./chintai20181225/" + "s" + k + ".json";
 		console.log("calling chintai list", fname);
 		chintai = require(fname);
 		console.log("chintai length", chintai.length, chintai.rows.length);
