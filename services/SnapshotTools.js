@@ -71,7 +71,7 @@ const checkAccountVote2 = async(account) => {
 
              
             const myObj = {account : tupled[i].account, amount :  amount, idx : i};
-            const res = await db.collection('snapshot1128c').insertOne(myObj);
+            const res = await db.collection('skyhook1226a').insertOne(myObj);
             //console.log("capturing", tupled[i].account, amount, i);
  
         }
