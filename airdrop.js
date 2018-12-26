@@ -272,6 +272,10 @@ const run = async () => {
     process.exit();
 };
 
+for(i=1;i<10;i++){
+    temp = "s"+i;
+    console.log(temp);
+}
 
  var port = process.env.PORT || 5000;
 console.log("port", port);
