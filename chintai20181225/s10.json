@@ -1,5 +1,4 @@
-{
-  "rows": [{
+{  "rows": [{
       "id": 2977030551,
       "user": "hezdgmbuhage",
       "quantity": "2762.0000 EOS",
@@ -1896,6 +1895,5 @@
       "airdrop_tokens": [],
       "autorenew": 0
     }
-  ],
-  "more": true
+  ]
 }
