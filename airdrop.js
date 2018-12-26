@@ -147,104 +147,52 @@ const run = async () => {
 		console.log("calling chintai list", fname);
 		chintai = require(fname);
 		console.log("chintai length", chintai.length, chintai.rows.length);
+		for(i = 0;i<chintai.rows.length;i++){
+			console.log("chintai", chintai.rows[i].user, chintai.rows[i].quantity);
+			let findflag = 0;
+			for(j=0;j < initialAccountBalances.length;j++){
+				findflag = 0;
+				if(initialAccountBalances[j].account == chintai.rows[i].user){
+                	temp = chintai.rows[i].quantity.split(" ");
+                	initialAccountBalances[j].amount = parseFloat(initialAccountBalances[j].amount) + parseFloat(temp[0]);
+                	console.log("matched", chintai.rows[i].user, initialAccountBalances[j].amount);
+                	findflag = 1;
+                	break;
+            	}
+        	}
+        	if(findflag == 0)
+              console.log("can not find", chintai.rows[i].user);
+    	}	    
 	}
-	process.exit();
-		
-    
-    //adding chintai amount to initial list
-    //chintai testing(S)
-    console.log("calling chintai list");
-    chintai = require('./chintai/s1.json');
-    console.log("chintai length", chintai.length, chintai.rows.length);
-    for(i = 0;i<chintai.rows.length;i++){
-        console.log("chintai", chintai.rows[i].user, chintai.rows[i].quantity);
-        let findflag = 0;
-        for(j=0;j < initialAccountBalances.length;j++){
-            findflag = 0;
-            if(initialAccountBalances[j].account == chintai.rows[i].user){
-                temp = chintai.rows[i].quantity.split(" ");
-                initialAccountBalances[j].amount = parseFloat(initialAccountBalances[j].amount) + parseFloat(temp[0]);
-                console.log("matched", chintai.rows[i].user, initialAccountBalances[j].amount);
-                findflag = 1;
-                break;
-            }
-        }
-        if(findflag == 0)
+	
+	for(k=1;k<=4;k++){
+		fname = "./chintai20181225/" + "u" + k + ".json";
+		console.log("calling chintai list", fname);
+		chintai = require(fname);
+		console.log("chintai length", chintai.length, chintai.rows.length);
+		for(i = 0;i<chintai.rows.length;i++){
+			console.log("chintai", chintai.rows[i].user, chintai.rows[i].quantity);
+			let findflag = 0;
+			for(j=0;j < initialAccountBalances.length;j++){
+				findflag = 0;
+				if(initialAccountBalances[j].account == chintai.rows[i].user){
+                	temp = chintai.rows[i].quantity.split(" ");
+                	initialAccountBalances[j].amount = parseFloat(initialAccountBalances[j].amount) + parseFloat(temp[0]);
+                	console.log("matched", chintai.rows[i].user, initialAccountBalances[j].amount);
+                	findflag = 1;
+                	break;
+            	}
+        	}
+        	if(findflag == 0)
               console.log("can not find", chintai.rows[i].user);
-    }
-    //chintai testing (E)
-    
-        //chintai testing(S)
-    console.log("calling chintai list");
-    chintai = require('./chintai/s2.json');
-    console.log("chintai length", chintai.length, chintai.rows.length);
-    for(i = 0;i<chintai.rows.length;i++){
-        console.log("chintai", chintai.rows[i].user, chintai.rows[i].quantity);
-        let findflag = 0;
-        for(j=0;j < initialAccountBalances.length;j++){
-            findflag = 0;
-            if(initialAccountBalances[j].account == chintai.rows[i].user){
-                temp = chintai.rows[i].quantity.split(" ");
-                initialAccountBalances[j].amount = parseFloat(initialAccountBalances[j].amount) + parseFloat(temp[0]);
-                console.log("matched", chintai.rows[i].user, initialAccountBalances[j].amount);
-                findflag = 1;
-                break;
-            }
-        }
-        if(findflag == 0)
-              console.log("can not find", chintai.rows[i].user);
-    }
-    //chintai testing (E)
-    
-        //chintai testing(S)
-    console.log("calling chintai list");
-    chintai = require('./chintai/s3.json');
-    console.log("chintai length", chintai.length, chintai.rows.length);
-    for(i = 0;i<chintai.rows.length;i++){
-        console.log("chintai", chintai.rows[i].user, chintai.rows[i].quantity);
-        let findflag = 0;
-        for(j=0;j < initialAccountBalances.length;j++){
-            findflag = 0;
-            if(initialAccountBalances[j].account == chintai.rows[i].user){
-                temp = chintai.rows[i].quantity.split(" ");
-                initialAccountBalances[j].amount = parseFloat(initialAccountBalances[j].amount) + parseFloat(temp[0]);
-                console.log("matched", chintai.rows[i].user, initialAccountBalances[j].amount);
-                findflag = 1;
-                break;
-            }
-        }
-        if(findflag == 0)
-              console.log("can not find", chintai.rows[i].user);
-    }
-    //chintai testing (E)
-    
-        //chintai testing(S)
-    console.log("calling chintai list");
-    chintai = require('./chintai/u1.json');
-    console.log("chintai length", chintai.length, chintai.rows.length);
-    for(i = 0;i<chintai.rows.length;i++){
-        console.log("chintai", chintai.rows[i].user, chintai.rows[i].quantity);
-        let findflag = 0;
-        for(j=0;j < initialAccountBalances.length;j++){
-            findflag = 0;
-            if(initialAccountBalances[j].account == chintai.rows[i].user){
-                temp = chintai.rows[i].quantity.split(" ");
-                initialAccountBalances[j].amount = parseFloat(initialAccountBalances[j].amount) + parseFloat(temp[0]);
-                console.log("matched", chintai.rows[i].user, initialAccountBalances[j].amount);
-                findflag = 1;
-                break;
-            }
-        }
-        if(findflag == 0)
-              console.log("can not find", chintai.rows[i].user);
-    }
-    //chintai testing (E)
+    	}	    
+	}
     
     console.log("calling balance");
     const accountBalances = await filterLists(initialAccountBalances);
     //const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
     const ratioBalances = accountBalances.map(tuple => Object.assign(tuple, {amount:getRatio(tuple)}))
-                          .filter(tuple => tuple.amount >= 0.5); //check DB later
+                          .filter(tuple => tuple.amount >= 100); //check DB later
     
     //console.log("ratioBalances", ratioBalances);
 
