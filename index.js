@@ -101,13 +101,13 @@ function deleteDuplicated(){
 
 const airdrop = async() => {
 	//console.log("do airdrop");
-	const msg = "Congratulations to those who have received TOOKTOOK Snowdrop (Airdrop). TOOKTOOK is the 3(sec) Visual Message Platform based on blockchain. TOOKTOOK will be listed on CHAINCE(chaince.com) on Dec. 7, 2018. You can meet TOOKTOOK(tooktook.io) in Q1.2019."
+	const msg = "Please visit https://eos.cafe and find exciting things. You can trade BEAN at Chaince. https://eos.cafe를 방문하여 흥미로운 것들을 찾아보십시오! Chaince에서 BEAN을 거래하실 수 있습니다. 请访问https://eos.cafe并找到令人兴奋的事情. 你可以在Chaince兑换BEAN."
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
 		const findQuery = { drop : "false" };
 		dbo.collection('skyhook1226a').findOne(findQuery, function(err, res){
 			if(res.length != 0){
-				transfer2("taketooktook", res.account, res.amount, msg).then((output)=>{
+				transfer2("thebeantoken", res.account, res.amount, msg).then((output)=>{
 					//update db to true
 					const findQuery = {_id : ObjectId(res._id)};
 					const myObj = {$set : {drop : "true"}};
