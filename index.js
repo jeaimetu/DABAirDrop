@@ -25,15 +25,15 @@ eos = Eos(config);
 
 async function transfer2(from, to, amount, memo){
 	const myaccount = await eos.contract(from);
-	const options = { authorization: [ `taketooktook@active` ] };
-	await myaccount.transfer(from, to, amount + " " + "TOOK",memo, options);
+	const options = { authorization: [ `thebeantoekn@active` ] };
+	await myaccount.transfer(from, to, amount + " " + "BEAN",memo, options);
 }
 
 function initAirDrop(){
 	console.log("starting init");
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
-		dbo.collection('snapshot1128c').updateMany({},{$set : {drop : "false"}}, function(err, res){
+		dbo.collection('skyhook1226a').updateMany({},{$set : {drop : "false", claim : "false"}}, function(err, res){
 			if(err) throw err;
 			console.log("initial complete");
 			db.close();
@@ -46,7 +46,7 @@ function initAirDrop2(){
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
 		for(idx=0;idx<=5773;idx++){
-		dbo.collection('snapshot1128c').updateOne({"idx" : idx},{$set : {drop : "true"}}, function(err, res){
+		dbo.collection('skyhook1226a').updateOne({"idx" : idx},{$set : {drop : "true"}}, function(err, res){
 			if(err) throw err;
 			console.log("initial complete");
 			db.close();
@@ -60,7 +60,7 @@ function initAirDrop3(){
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
 		for(idx=0;idx<=5773;idx++){
-		dbo.collection('snapshot1128c').updateMany({"drop" : "error"},{$set : {drop : "false"}}, function(err, res){
+		dbo.collection('skyhook1226a').updateMany({"drop" : "error"},{$set : {drop : "false"}}, function(err, res){
 			if(err) throw err;
 			console.log("initial complete");
 			db.close();
@@ -73,7 +73,7 @@ function initAirDrop3(){
 function getSum(){
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
-		dbo.collection('snapshot1128c').find({}).toArray((err,res)=>{
+		dbo.collection('skyhook1226a').find({}).toArray((err,res)=>{
 			if(err) throw err;
 			var sum = 0;
 			for(i = 0;i < res.length;i++)
@@ -87,7 +87,7 @@ function getSum(){
 function deleteDuplicated(){
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
-		dbo.collection('snapshot1128c').deleteMany({_id : {$gte: ObjectId("5b99b86568135e0014d9fbde")}}, function(err, res){
+		dbo.collection('skyhook1226a').deleteMany({_id : {$gte: ObjectId("5b99b86568135e0014d9fbde")}}, function(err, res){
 		//dbo.collection('dexeos_airdrop').findOne({idx : 0}, function(err, res){
 			if(err) throw err;
 			console.log(err);
@@ -105,13 +105,13 @@ const airdrop = async() => {
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
 		const findQuery = { drop : "false" };
-		dbo.collection('snapshot1128c').findOne(findQuery, function(err, res){
+		dbo.collection('skyhook1226a').findOne(findQuery, function(err, res){
 			if(res.length != 0){
 				transfer2("taketooktook", res.account, res.amount, msg).then((output)=>{
 					//update db to true
 					const findQuery = {_id : ObjectId(res._id)};
 					const myObj = {$set : {drop : "true"}};
-					dbo.collection('snapshot1128c').updateOne(findQuery, myObj, function(err, resUpdate){
+					dbo.collection('skyhook1226a').updateOne(findQuery, myObj, function(err, resUpdate){
 						console.log(".");
 						setTimeout(airdrop, 30);
 						db.close();
@@ -119,7 +119,7 @@ const airdrop = async() => {
 				}).catch((err) =>{					
 					const findQuery = {_id : ObjectId(res._id)};
 					const myObj = {$set : {drop : "error"}};
-					dbo.collection('snapshot1128c').updateOne(findQuery, myObj, function(err, resUpdate){
+					dbo.collection('skyhook1226a').updateOne(findQuery, myObj, function(err, resUpdate){
 						console.log("trasnfer error", res.account);						
 						setTimeout(airdrop, 30);
 						db.close();
@@ -135,14 +135,9 @@ const airdrop = async() => {
 
 //airdrop();
 					       
-//initAirDrop3();
+initAirDrop();
 //deleteDuplicated();
-//getSum();
-
-for(i=1;i<10;i++){
-    temp = "s"+i;
-    console.log(temp);
-}
+getSum();
 
 
     if(process.env.action == "false"){
