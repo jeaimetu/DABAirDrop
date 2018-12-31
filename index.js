@@ -101,7 +101,7 @@ function deleteDuplicated(){
 
 const airdrop = async() => {
 	//console.log("do airdrop");
-	const msg = "Please visit https://eos.cafe and find exciting things. You can trade BEAN at Chaince. https://eos.cafe를 방문하여 흥미로운 것들을 찾아보십시오! Chaince에서 BEAN을 거래하실 수 있습니다. 请访问https://eos.cafe并找到令人兴奋的事情. 你可以在Chaince兑换BEAN."
+	const msg = "Visit EOSCAFE, find exciting things. Trading  BEAN at Chaince. EOSCAFE에서 흥미로운 것을 찾아보세요. Chaince에서 BEAN을 거래하세요. 请访问EOSCAFE并找到令人兴奋的事情. 你可以在Chaince兑换BEAN. (https://eos.cafe)"
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
 		const findQuery = { drop : "false" };
