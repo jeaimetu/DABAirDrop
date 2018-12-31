@@ -25,7 +25,7 @@ eos = Eos(config);
 
 async function transfer2(from, to, amount, memo){
 	const myaccount = await eos.contract(from);
-	const options = { authorization: [ `thebeantoekn@active` ] };
+	const options = { authorization: [ `thebeantoken@active` ] };
 	await myaccount.transfer(from, to, amount + " " + "BEAN",memo, options);
 }
 
@@ -135,11 +135,11 @@ const airdrop = async() => {
 
 //airdrop();
 					       
-//initAirDrop();
+initAirDrop3();
 //deleteDuplicated();
 //getSum();
 
-
+/*
     if(process.env.action == "false"){
 	    console.log("do nothing");
         process.exit();
@@ -147,7 +147,7 @@ const airdrop = async() => {
 	setTimeout(airdrop, 30);	
     }
     
-
+*/
     
     
 
