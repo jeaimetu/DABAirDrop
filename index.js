@@ -150,6 +150,7 @@ async function getData(){
 		return null});
 	if(val != null){
 		console.log("get table row success", val.rows.length);
+		console.log("1st row", val.rows[0]);
 		console.log(val);
 	}
 		
