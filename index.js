@@ -139,7 +139,7 @@ const airdrop = async() => {
 //deleteDuplicated();
 //getSum();
 
-async getData(){
+async function getData(){
 	let val;
 	val = await eos.getTableRows({json : true,
 				      code : "thebeantoken",
