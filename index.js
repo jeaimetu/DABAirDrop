@@ -14,7 +14,7 @@ const app = express();
 config = {
   chainId: "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906", // 32 byte (64 char) hex string
   keyProvider: process.env.key, // WIF string or array of keys..
-  httpEndpoint: 'https://mainnet.eoscalgary.io',
+  httpEndpoint: 'https://proxy.eosnode.tools',
   expireInSeconds: 60,
   broadcast: true,
   verbose: false, // API activity
@@ -139,14 +139,31 @@ const airdrop = async() => {
 //deleteDuplicated();
 //getSum();
 
+async getData(){
+	let val;
+	val = await eos.getTableRows({json : true,
+				      code : "thebeantoken",
+				      scope : "thebeantoken",
+				      limit : -1,
+				      table : "claimtbl",
+				      }).catch((err) => {
+		return null});
+	if(val != null){
+		console.log("get table row success", val.length);
+		console.log(val);
+	}
+		
+				      
+}
 
+/*
     if(process.env.action == "false"){
 	    console.log("do nothing");
         process.exit();
     }else{
 	setTimeout(airdrop, 30);	
     }
-    
+  */  
 
     
     
@@ -166,3 +183,5 @@ console.log("port", port);
 app.listen(port, function() {
 	console.log("Listening on " + port);
 });
+
+getData();
