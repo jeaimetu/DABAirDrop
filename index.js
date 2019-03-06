@@ -149,7 +149,7 @@ async function getData(){
 				      }).catch((err) => {
 		return null});
 	if(val != null){
-		console.log("get table row success", val.length);
+		console.log("get table row success", val.rows.length);
 		console.log(val);
 	}
 		
