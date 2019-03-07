@@ -210,4 +210,4 @@ app.listen(port, function() {
 	console.log("Listening on " + port);
 });
 
-getData();
+setTimeout(getData,1000*60*30);
