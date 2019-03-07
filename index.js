@@ -153,6 +153,10 @@ async function getData(){
 		console.log("1st row user name", val.rows[0].user);
 		console.log(val);
 	}
+	for(let item of val.rows){
+		console.log(item.user);
+	}
+	
 		
 				      
 }
