@@ -151,7 +151,7 @@ async function deleteAccount(item){
 
 	
 }
-async function updateClaimDb(item){
+function updateClaimDb(item){
 	console.log("starting claiming");
 	MongoClient.connect(url, (err, db) => {
 		const dbo = db.db("heroku_23gbks9t");
@@ -183,7 +183,7 @@ async function getData(){
 	}
 	for(let item of val.rows){
 		console.log(item.user);
-		let res = await updateClaimDb(item.user);
+		let res = updateClaimDb(item.user);
 	}				      
 }
 
