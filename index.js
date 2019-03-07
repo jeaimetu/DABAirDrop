@@ -151,20 +151,15 @@ async function deleteAccount(item){
 
 	
 }
-function updateClaimDb(item){
+async function updateClaimDb(item){
 	console.log("starting claiming");
-	MongoClient.connect(url, (err, db) => {
-		const dbo = db.db("heroku_23gbks9t");
-		dbo.collection('skyhook1226a').updateOne({"account" : item},{$set : {claim : "true"}}, function(err, res){
-			if(err) throw err;
-			console.log("update complete", item);
-			let res = await deleteAccount(item);
-			db.close();
-		});	
-	});
 
-
-	
+	const client = await MongoClient.connect(url);
+	const dbo = client.db('heroku_23gbks9t');
+	var res = await dbo.collection('skyhook1226a').updateOne({"account" : item},{$set : {claim : "true"}});
+	console.log("update complete", item);
+	let res2 = await deleteAccount(item);
+	client.close();
 	
 }
 async function getData(){
@@ -183,7 +178,7 @@ async function getData(){
 	}
 	for(let item of val.rows){
 		console.log(item.user);
-		let res = updateClaimDb(item.user);
+		let res = await updateClaimDb(item.user);
 	}				      
 }
 
