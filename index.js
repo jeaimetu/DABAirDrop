@@ -138,7 +138,35 @@ const airdrop = async() => {
 //initAirDrop3();
 //deleteDuplicated();
 //getSum();
+async function deleteAccount(item){
+	eos.transaction("thebeantoken", myaccount => {
+		const options = { authorization: [ `thebeantoken@active` ] };
+		myaccount.delaccount(item, options);
+	}).then((output) => {
+		console.log("delete success", item);		
+	}).catch((err)=>{
+		console.log("delete fail", item);
+	});
+		
 
+	
+}
+async function updateClaimDb(item){
+	console.log("starting claiming");
+	MongoClient.connect(url, (err, db) => {
+		const dbo = db.db("heroku_23gbks9t");
+		dbo.collection('skyhook1226a').updateOne({"account" : item},{$set : {claim : "true"}}, function(err, res){
+			if(err) throw err;
+			console.log("update complete", item);
+			let res = await deleteAccount(item);
+			db.close();
+		});	
+	});
+
+
+	
+	
+}
 async function getData(){
 	let val;
 	val = await eos.getTableRows({json : true,
@@ -155,10 +183,8 @@ async function getData(){
 	}
 	for(let item of val.rows){
 		console.log(item.user);
-	}
-	
-		
-				      
+		let res = await updateClaimDb(item.user);
+	}				      
 }
 
 /*
